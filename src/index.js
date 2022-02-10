@@ -3,14 +3,13 @@ const http = require('http');
 const router = require('./routes/index');
 const socketio = require('socket.io');
 const chatListener = require('./listeners/ChatListener');
-// var cors = require('cors');
 const PORT = process.env.PORT || 5000;
 
 const app = express();
-// app.use(cors());
 const server = http.createServer(app);
 const io = socketio(server, {
     serveClient: false, 
+    // Enable CORS for http://localhost:3000
     cors: {
         origin: 'http://localhost:3000'
     } 
