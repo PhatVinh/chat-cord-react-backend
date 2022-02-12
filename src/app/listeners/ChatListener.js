@@ -1,10 +1,10 @@
-const formatMessage = require('../helper/message');
+const formatMessage = require('../../helper/message');
 const {
     userJoin,
     getCurrentUser,
     getRoomUsers,
     userLeaves,
-} = require('../config/fake_db');
+} = require('../../config/fake_db');
 
 
 function ChatListener(io) {
@@ -16,7 +16,7 @@ function ChatListener(io) {
 
             // Add current user to users 
             let user = userJoin(socket.id, userName, roomName);
-            
+
             // Join current user to room (subscribe to a channel) used for broadcast to a specific room
             socket.join(user.roomName);
 
@@ -56,6 +56,8 @@ function ChatListener(io) {
         })
 
         socket.on('disconnect', () => {
+            console.log("User leave");
+            console.log(socket.id);
             const user = userLeaves(socket.id);
             
             if(user) {

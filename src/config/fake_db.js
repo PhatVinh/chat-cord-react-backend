@@ -30,9 +30,15 @@ function userLeaves(id) {
     return false;
 }
 
+// Get user by username 
+function getUserByUserName(userName) {
+    return users.find(user => user.userName === userName);
+}
+
 module.exports = {
     userJoin,
     getCurrentUser,
     getRoomUsers,
-    userLeaves
+    userLeaves,
+    getUserByUserName
 }

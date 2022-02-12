@@ -1,7 +1,8 @@
 const loginRouter = require('./login');
+const userRouter = require('./user');
 
 function router (app) {
-    app.use('/login', loginRouter);
+    app.use('/user', userRouter);
 }
 
 module.exports = router;

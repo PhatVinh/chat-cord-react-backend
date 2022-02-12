@@ -2,16 +2,25 @@ const express = require('express');
 const http = require('http');
 const router = require('./routes/index');
 const socketio = require('socket.io');
-const chatListener = require('./listeners/ChatListener');
+const cors = require('cors');
+const chatListener = require('./app/listeners/ChatListener');
 const PORT = process.env.PORT || 5000;
 
 const app = express();
+
+//  Enable CORS for all site
+app.use(cors());
+
+// Setup route
+router(app);
+
+// Setup socketio
 const server = http.createServer(app);
 const io = socketio(server, {
-    serveClient: false, 
     // Enable CORS for http://localhost:3000
+    serveClient: false,
     cors: {
-        origin: 'http://localhost:3000'
+        origin: '*',
     } 
 });
 chatListener(io);
