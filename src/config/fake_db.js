@@ -1,11 +1,11 @@
 const users = [];
 
 // Join user to chat 
-function userJoin(id, userName, roomName) {
+function userJoin(id, userName, roomId) {
     const user = {
         id,
         userName,
-        roomName
+        roomId
     }
 
     users.push(user);
@@ -14,12 +14,13 @@ function userJoin(id, userName, roomName) {
 
 // Get current user
 function getCurrentUser(id) {
+    console.log(users);
     return users.find(user => user.id === id);
 }
 
 // Get room users 
-function getRoomUsers(roomName) {
-    return users.filter(user => user.roomName === roomName);
+function getRoomUsers(roomId) {
+    return users.filter(user => user.roomId === roomId);
 }
 
 function userLeaves(id) {

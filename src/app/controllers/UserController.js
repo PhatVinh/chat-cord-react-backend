@@ -20,7 +20,7 @@ class UserController {
             userName: userName,
             isValid: false
         });
-    }       
+    }
 }
 
 module.exports = new UserController();

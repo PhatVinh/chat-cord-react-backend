@@ -3,7 +3,8 @@ const http = require('http');
 const router = require('./routes/index');
 const socketio = require('socket.io');
 const cors = require('cors');
-const chatListener = require('./app/listeners/ChatListener');
+const chatListener = require('./app/listeners/index.js');
+const database = require('./config/db/index');
 const PORT = process.env.PORT || 5000;
 
 const app = express();
@@ -13,6 +14,9 @@ app.use(cors());
 
 // Setup route
 router(app);
+
+// Connect to database
+database.connect();
 
 // Setup socketio
 const server = http.createServer(app);
